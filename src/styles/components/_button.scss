@@ -1,0 +1,34 @@
+.button {
+  background: none;
+  color: black;
+  outline: none;
+  border: none;
+  padding:none;
+  width: 236px;
+}
+.button-pressed {
+  background: $orange;
+  padding:none;
+  outline:none;
+  border: none;
+  padding:none;
+  width: 236px;
+}
+.button-pressed:focus {
+  outline: none;
+}
+.button-reset {
+  background: none;
+  color: $orange;
+  outline: none;
+  border: none;
+  padding:none;
+  width: 55px;
+  &:hover {
+    background: $orange;
+    color: $green;
+  }
+  &:active {
+    background: none;
+  }
+}

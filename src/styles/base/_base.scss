@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: $green;
+  color: black;
+  font-family: futura;
+  font-size: $m-size;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+}

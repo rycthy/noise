@@ -1,0 +1,9 @@
+node_modules/
+.vscode/
+.DS_Store
+.eslintrc.json
+public/dist/
+.env.test
+.env.development
+src/utils/scales.js
+src/utils/patches/unusedPatches.js
