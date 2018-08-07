@@ -27,6 +27,8 @@ export default (props) => (p) => {
     }
   };
   p.draw = () => {
+    const pulse = martianA.envelope.value;
+    const mutateLeft = martianB.envelope.value;
     p.background(25, 146, 98);
     const waveformValue = waveform.getValue();
     p.beginShape();
@@ -37,8 +39,6 @@ export default (props) => (p) => {
       p.vertex(i * 2, p.map(waveformValue[i] * 5, -1, 1, p.height, 0));
     }
     p.endShape();
-    const pulse = martianA.envelope.value;
-    const mutateLeft = martianB.envelope.value;
     p.fill('#F1B255');
     p.ellipse(p.width / 2, p.height / 2, 10 + mutateLeft * 400, 10 + mutateLeft * 400);
     if (pulse > .01) {
