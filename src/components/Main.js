@@ -11,6 +11,7 @@ class Main extends React.Component {
     return (
       <div>
         <h1 className="header">calm corner.</h1>
+        <a href="https://github.com/cephscope/noise" className="header">github</a>
         <div className="content-container">
           <Controls />
           <Stage container="app" height={100} width={800}>
