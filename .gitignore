@@ -7,4 +7,3 @@ public/dist/
 .env.development
 src/utils/scales.js
 src/utils/patches/unusedPatches.js
-src/routers
