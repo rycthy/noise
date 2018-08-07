@@ -34,7 +34,7 @@ export default (props) => (p) => {
       p.stroke('#F1B255');
       p.noFill();
       p.strokeWeight(5);
-      p.vertex(i * 2, p.map(waveformValue[i], -1, 1, p.height, 0));
+      p.vertex(i * 2, p.map(waveformValue[i] * 5, -1, 1, p.height, 0));
     }
     p.endShape();
     const pulse = martianA.envelope.value;

@@ -1,16 +1,16 @@
 import React from 'react';
 import Konva from 'konva';
-import { RegularPolygon, Stage } from 'react-konva';
-import { lead, vibrato, ambient } from '../utils/patches/tranquilPatches';
+import { RegularPolygon } from 'react-konva';
+import { lead } from '../utils/patches/tranquilPatches';
 
-const scale = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'C5', 'D5'];
+const scale = ['G4', 'A4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5'];
 
 class LeadPlayer extends React.Component {
   orange() {
     rgba(243,179,75,0);
   }
   dragBoundFunc = (pos) => {
-    const newX = pos.x > 750 ? 750 : pos.x < 50 ? 50 : pos.x;
+    const newX = pos.x > 799 ? 799 : pos.x < 50 ? 50 : pos.x;
     const newY = pos.y > 50 ? 50 : pos.y < 50 ? 50 : pos.y;
     return {
       x: newX,
@@ -25,17 +25,16 @@ class LeadPlayer extends React.Component {
   };
   onDrag = (e) => {
     const noteIndex = Math.floor(e.target.attrs.x / 100);
-    ambient.setNote(scale[noteIndex]);
+    lead.setNote(scale[noteIndex]);
   };
   onMouseDown = (e) => {
     document.body.style.cursor = 'grabbing';
     const noteIndex = Math.floor(e.target.attrs.x / 100);
-    ambient.triggerAttack(scale[noteIndex]);
+    lead.triggerAttack(scale[noteIndex]);
   };
   onMouseUp = (e) => {
     document.body.style.cursor = 'grab';
-    // const val = (Math.floor(e.evt.clientY / 100));
-    ambient.triggerRelease();
+    lead.triggerRelease();
   };
   render() {
     return (

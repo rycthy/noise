@@ -14,7 +14,7 @@ class Main extends React.Component {
         <a href="https://github.com/cephscope/noise" className="header">github</a>
         <div className="content-container">
           <Controls />
-          <Stage container="app" height={100} width={800}>
+          <Stage container="app" height={100} width={850}>
             <Layer>
               <LeadPlayer />
             </Layer>

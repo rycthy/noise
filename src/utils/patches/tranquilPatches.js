@@ -1,6 +1,12 @@
 import Tone from 'tone';
 
 // effects & analysers
+const freeverb = new Tone.PitchShift({
+  pitch: 0,
+  windowSize: 0.5,
+  delayTime: 0,
+  feedback: .9
+});
 export const chorus = new Tone.Chorus(2, 2.5, 0.7);
 export const pingPong = new Tone.PingPongDelay("16n", 0.2).toMaster();
 export const vibrato = new Tone.Vibrato({
@@ -12,76 +18,6 @@ export const vibrato = new Tone.Vibrato({
 export const waveform = new Tone.Analyser('waveform');
 
 // patches
-export const fan = new Tone.FMSynth({
-  "harmonicity": 3.01,
-  "modulationIndex": 14,
-  "oscillator": {
-    "type": "triangle"
-  },
-  "envelope": {
-    "attack": 0.2,
-    "decay": 0.3,
-    "sustain": 0.1,
-    "release": .2
-  },
-  "modulation": {
-    "type": "square"
-  },
-  "modulationEnvelope": {
-    "attack": 0.01,
-    "decay": 0.5,
-    "sustain": 0.2,
-    "release": 0.1
-  }
-}).toMaster();
-
-export const ambient = new Tone.DuoSynth({
-  vibratoAmount: 0,
-  vibratoRate: 0,
-  portamento: .1,
-  harmonicity: 1.5,
-  voice0: {
-    volume: -15,
-    portamento: 0,
-    oscillator: {
-      type: 'sine'
-    },
-    filterEnvelope: {
-      attack: 5,
-      decay: 1,
-      sustain: 1,
-      release: 5
-    },
-    envelope: {
-      attack: 2,
-      decay: 1,
-      sustain: 1,
-      release: 1
-    }
-  },
-  voice1: {
-    volume: -10,
-    portamento: 0,
-    oscillator: {
-      type: 'sine'
-    },
-    filterEnvelope: {
-      attack: 5,
-      decay: 1,
-      sustain: 5,
-      release: 1
-    },
-    envelope: {
-      attack: 2,
-      decay: 1,
-      sustain: 1,
-      release: .1
-    }
-  }
-}
-).chain(waveform).connect(pingPong);
-
-ambient.volume.value = -10
 
 export const martianB = new Tone.MembraneSynth({
   "pitchDecay": 0.008,
@@ -103,9 +39,18 @@ export const martianA = new Tone.MembraneSynth({
   },
   volume: -5
 }).connect(pingPong);
-export const lead = new Tone.Synth()
-  .chain(chorus, vibrato, Tone.Master)
-  .set("envelope.attack", 0.04).toMaster();
+export const lead = new Tone.Synth({
+  oscillator: {
+    type: 'triangle'
+  },
+  envelope: {
+    attack: .5,
+    decay: .7,
+    sustain: .7,
+    release: 1
+  },
+  volume: -25
+}).chain(freeverb, waveform, chorus, vibrato, Tone.Master).toMaster();
 export const water = new Tone.Player({
   url: './audio/river.mp3',
   loop: true,

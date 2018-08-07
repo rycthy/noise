@@ -1,6 +1,5 @@
-import Tone from 'tone';
-import { ambient, water } from '../utils/patches/tranquilPatches';
-import { bleepSequence, martianBase, martianArp, fanSequence  } from '../utils/sequences/tranquilSequences';
+import { water } from '../utils/patches/tranquilPatches';
+import { martianBase, martianArp, fanSequence  } from '../utils/sequences/tranquilSequences';
 
 const tracksReducerDefaultState = {
   bleep: false,
@@ -25,16 +24,12 @@ export default (state = tracksReducerDefaultState, action) => {
       }
     case 'START_AMBIENT':
       water.start();
-      // ambient.triggerAttack(['C4', 'E4', 'G4']);
-      // ambient.volume.rampTo(-15);
       return {
         ...state,
         ambient: true
       };
     case 'STOP_AMBIENT':
       water.stop();
-      // ambient.triggerRelease(['C4', 'E4', 'G4']);
-      // ambient.volume.rampTo(-100);
       return {
         ...state,
         ambient: false
