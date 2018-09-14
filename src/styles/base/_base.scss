@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box
 }
+::-webkit-scrollbar { 
+  display: none; 
+}
 
 html {
   font-size: 62.5%;
@@ -12,6 +15,8 @@ body {
   font-family: futura;
   font-size: $m-size;
   line-height: 1.6;
+  display: flex;
+  justify-content: center;
 }
 
 button {

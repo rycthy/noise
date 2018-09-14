@@ -1,4 +1,10 @@
 .content-container {
   margin: 0 auto;
   max-width: 80rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+#sketch {
+  width: 100%;
 }
