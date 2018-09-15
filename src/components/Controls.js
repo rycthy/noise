@@ -44,34 +44,34 @@ const Controls = (props) => {
     props.resetTracks();
   };
 
-    return (
-      <div>
-        {
-          props.tracks.ambient ?
-            <button className="button-pressed" onClick={onStopAmbient}>◼ 🌊</button> :
-            <button className="button" onClick={onStartAmbient}>▶ 🌊</button>
-        }
-        {
-          props.tracks.bleep ?
-            <button className="button-pressed" onClick={onStopBleepSequence}>◼ 🌱</button> :
-            <button className="button" onClick={onStartBleepSequence}>▶ 🌱</button>
-        }
-        {
-          props.tracks.martian ?
-            <button className="button-pressed" onClick={onStopMartian}>◼ 🌿</button> :
-            <button className="button" onClick={onStartMartian}>▶ 🌿</button>
-        }
-        <button className="button-reset" onClick={onReset}>♲</button>
-        <input
-          className="input"
-          type="range"
-          value={props.settings.bpm}
-          min="10"
-          max="120"
-          onChange={onEditBpm}
-        />
-      </div>
-    );
+  return (
+    <div>
+      {
+        props.tracks.ambient ?
+          <button className="button-pressed" onClick={onStopAmbient}>◼ 🌊</button> :
+          <button className="button" onClick={onStartAmbient}>▶ 🌊</button>
+      }
+      {
+        props.tracks.bleep ?
+          <button className="button-pressed" onClick={onStopBleepSequence}>◼ 🌱</button> :
+          <button className="button" onClick={onStartBleepSequence}>▶ 🌱</button>
+      }
+      {
+        props.tracks.martian ?
+          <button className="button-pressed" onClick={onStopMartian}>◼ 🌿</button> :
+          <button className="button" onClick={onStartMartian}>▶ 🌿</button>
+      }
+      <button className="button-reset" onClick={onReset}>♲</button>
+      <input
+        className="input"
+        type="range"
+        value={props.settings.bpm}
+        min="10"
+        max="120"
+        onChange={onEditBpm}
+      />
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => ({

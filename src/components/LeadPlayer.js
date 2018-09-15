@@ -31,23 +31,23 @@ const LeadPlayer = () => {
     document.body.style.cursor = 'grab';
     lead.triggerRelease();
   };
-    return (
-      <RegularPolygon
-        x={400}
-        y={50}
-        sides={4}
-        radius={25}
-        fill={'#F1B255'}
-        strokeWidth={1}
-        draggable={true}
-        dragBoundFunc={dragBoundFunc}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
-        onDragMove={onDrag}
-      />
-    );
+  return (
+    <RegularPolygon
+      x={400}
+      y={50}
+      sides={4}
+      radius={25}
+      fill={'#F1B255'}
+      strokeWidth={1}
+      draggable={true}
+      dragBoundFunc={dragBoundFunc}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onDragMove={onDrag}
+    />
+  );
 }
 
 export default LeadPlayer;
