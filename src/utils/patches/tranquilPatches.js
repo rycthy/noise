@@ -1,5 +1,7 @@
 import Tone from 'tone';
 
+export const scale = ['G4', 'A4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5'];
+
 // effects & analysers
 const freeverb = new Tone.PitchShift({
   pitch: 0,
