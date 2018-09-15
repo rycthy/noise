@@ -3,77 +3,75 @@ import { connect } from 'react-redux';
 import { editBpm, resetSettings } from '../actions/settings';
 import { startBleep, stopBleep, startAmbient, stopAmbient, startMartian, stopMartian, startFan, stopFan, resetTracks } from '../actions/tracks';
 
-class Controls extends React.Component {
-  onStartBleepSequence = () => {
-    if (!this.props.tracks.bleep) {
-      this.props.startBleep();
+const Controls = (props) => {
+  const onStartBleepSequence = () => {
+    if (!props.tracks.bleep) {
+      props.startBleep();
     };
   };
-  onStopBleepSequence = () => {
-    if (this.props.tracks.bleep) {
-      this.props.stopBleep();
+  const onStopBleepSequence = () => {
+    if (props.tracks.bleep) {
+      props.stopBleep();
     };
   };
-  onStartAmbient = () => {
-    if (!this.props.tracks.ambient) {
-      this.props.startAmbient();
+  const onStartAmbient = () => {
+    if (!props.tracks.ambient) {
+      props.startAmbient();
     }
   };
-  onStopAmbient = () => {
-    if (this.props.tracks.ambient) {
-      this.props.stopAmbient();
+  const onStopAmbient = () => {
+    if (props.tracks.ambient) {
+      props.stopAmbient();
     }
   };
-  onStartMartian = () => {
-    if (!this.props.tracks.martian) {
-      this.props.startMartian();
+  const onStartMartian = () => {
+    if (!props.tracks.martian) {
+      props.startMartian();
     }
   };
-  onStopMartian = () => {
-    if (this.props.tracks.martian) {
-      this.props.stopMartian();
+  const onStopMartian = () => {
+    if (props.tracks.martian) {
+      props.stopMartian();
     }
   };
-  onEditBpm = (e) => {
+  const onEditBpm = (e) => {
     e.preventDefault();
     const bpm = parseInt(e.target.value);
-    this.props.editBpm(bpm);
+    props.editBpm(bpm);
   };
-  onReset = () => {
-    this.props.resetSettings();
-    this.props.resetTracks();
+  const onReset = () => {
+    props.resetSettings();
+    props.resetTracks();
   };
 
-  render() {
     return (
       <div>
         {
-          this.props.tracks.ambient ?
-            <button className="button-pressed" onClick={this.onStopAmbient}>◼ 🌊</button> :
-            <button className="button" onClick={this.onStartAmbient}>▶ 🌊</button>
+          props.tracks.ambient ?
+            <button className="button-pressed" onClick={onStopAmbient}>◼ 🌊</button> :
+            <button className="button" onClick={onStartAmbient}>▶ 🌊</button>
         }
         {
-          this.props.tracks.bleep ?
-            <button className="button-pressed" onClick={this.onStopBleepSequence}>◼ 🌱</button> :
-            <button className="button" onClick={this.onStartBleepSequence}>▶ 🌱</button>
+          props.tracks.bleep ?
+            <button className="button-pressed" onClick={onStopBleepSequence}>◼ 🌱</button> :
+            <button className="button" onClick={onStartBleepSequence}>▶ 🌱</button>
         }
         {
-          this.props.tracks.martian ?
-            <button className="button-pressed" onClick={this.onStopMartian}>◼ 🌿</button> :
-            <button className="button" onClick={this.onStartMartian}>▶ 🌿</button>
+          props.tracks.martian ?
+            <button className="button-pressed" onClick={onStopMartian}>◼ 🌿</button> :
+            <button className="button" onClick={onStartMartian}>▶ 🌿</button>
         }
-        <button className="button-reset" onClick={this.onReset}>♲</button>
+        <button className="button-reset" onClick={onReset}>♲</button>
         <input
           className="input"
           type="range"
-          value={this.props.settings.bpm}
+          value={props.settings.bpm}
           min="10"
           max="120"
-          onChange={this.onEditBpm}
+          onChange={onEditBpm}
         />
       </div>
     );
-  }
 }
 
 const mapStateToProps = (state) => ({
